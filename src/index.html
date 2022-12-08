@@ -1,34 +1,112 @@
 <!DOCTYPE html>
-<html class="page" lang="en">
+<html class="page" lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <link href="css/style.min.css" rel="stylesheet" />
-  <link type="image/svg+xml" href="img/favicon.svg" rel="icon" />
+  <link href="img/favicon.svg" rel="icon" type="image/svg+xml" />
   <title>Студика</title>
 </head>
 
 <body class="page__body">
-  <header>
-    <div><a href="">
-      <img src="img/logo/logo.png" />
-    </a>
+  <header class="header">
+    <div class="container header__container">
+      <nav class="nav-modal nav-modal--open">
+        <div class="nav-modal__box">
+          <button aria-label="переключить меню" class="menu-button">
+            <span class="menu-button__lines"></span>
+          </button>
+
+          <div class="nav-modal__modal-menu modal-menu">
+            <div class="modal-menu__shadow"></div>
+
+            <div class="modal-menu__content">
+              <button class="modal-menu__close-button">
+                <svg class="modal-menu__close-icon" height="14" width="14">
+                  <use xlink:href="img/icons/sprite.svg#close-icon"></use>
+                </svg>
+                <span class="visually-hidden">Закрыть меню</span>
+              </button>
+
+              <a class="modal-menu__profile-link profile-link" href="#">
+                <span class="profile-link__name">Екатерина</span>
+                <div class="profile-link__image">
+                  <img
+                    alt="ваш аватар"
+                    height="32"
+                    src="img/content/avatar.png"
+                    width="32"
+                  />
+                </div>
+              </a>
+
+              <button class="modal-menu__region region">
+                <span class="region__text">
+                  <span class="region__label">Город или регион</span>
+                  <span class="region__chosen">Любой регион</span>
+                </span>
+                <svg class="region__icon" height="32" width="32">
+                  <use xlink:href="img/icons/sprite.svg#compass-icon"></use>
+                </svg>
+              </button>
+
+              <div class="mobile-nav-box">
+                <ul class="mobile-nav-box__categories-list">
+                  <li class="mobile-nav-box__categories-item mobile-nav-box__categories-item--active"
+                      data-category="higher">
+                    <button class="mobile-nav-box__categories-button">Высшее</button>
+                  </li>
+                  <li class="mobile-nav-box__categories-item" data-category="secondary">
+                    <button class="mobile-nav-box__categories-button">Среднее</button>
+                  </li>
+                </ul>
+
+                <ul class="mobile-nav-box__mobile-link-list mobile-link-list mobile-link-list--active"
+                    data-category="higher">
+                  <li class="mobile-link-list__item">
+                    <a class="mobile-link-list__link" href="#">Вузы</a>
+                  </li>
+                  <li class="mobile-link-list__item">
+                    <a class="mobile-link-list__link" href="#">Специальности</a>
+                  </li>
+                </ul>
+                <ul class="mobile-link-list" data-category="secondary">
+                  <li class="mobile-link-list__item"><a class="mobile-lint-list__link" href="#">Колледжи</a></li>
+                  <li class="mobile-link-list__item"><a class="mobile-lint-list__link" href="#">Техникумы</a></li>
+                  <li class="mobile-link-list__item"><a class="mobile-lint-list__link" href="#">Училища</a></li>
+                  <li class="mobile-link-list__item"><a class="mobile-lint-list__link" href="#">Специальности</a></li>
+                </ul>
+                <ul class="mobile-nav-box__secondary_list  secondary-list">
+                  <li class="secondary-list__item"><a class="secondary-list__link" href="#">Профессии</a></li>
+                  <li class="secondary-list__item"><a class="secondary-list__link" href="#">Отзывы студентов</a></li>
+                  <li class="secondary-list__item"><a class="secondary-list__link" href="#">Реклама на сайте</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <a class="header__logo logo" href="#">
+        <img alt="Логотип Студика" src="img/logo/logo.png" />
+      </a>
+
+      <div class="header__region-menu region-menu">
+        <button class="region-menu__button">
+          <svg class="region-menu__icon" height="32" width="32">
+            <use xlink:href="img/icons/sprite.svg#compass-icon"></use>
+          </svg>
+          <span class="region-menu__text">Любой регион</span></button>
+      </div>
+
+      <a class="header__favourites favourites" href="">
+        <svg class="favourites__icon" height="14" width="15">
+          <use xlink:href="img/icons/sprite.svg#favourites-icon"></use>
+        </svg>
+        <span class="favourites__count">1</span>
+      </a>
     </div>
-    
-    <nav>
-      <ul>
-        <li><a href="#">Вузы</a></li>
-        <li><a href="#">Колледжи</a></li>
-        <li><a href="#">Техникумы</a></li>
-        <li><a href="#">Училища</a></li>
-        <li><a href="#">Специальности</a></li>
-        <li><a href="#">Профессии</a></li>
-        <li><a href="#">Отзывы</a></li>
-        <li><a href="#">Учебным заведениям</a></li>
-        <li><a href="#">Тест на профориентацию</a></li>
-      </ul>
-    </nav>
   </header>
 
   <script src="js/app.min.js" type="module"></script>

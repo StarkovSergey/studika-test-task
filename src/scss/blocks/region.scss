@@ -1,0 +1,26 @@
+.region {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 8px 16px;
+  border: 1px solid var(--color-outline);
+  border-radius: 5px;
+  text-align: left;
+}
+
+.region__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.region__label {
+  color: var(--color-text-descriptor);
+  font-size: var(--fz-descriptor);
+  line-height: var(--lh-descriptor);
+}
+
+.region__icon {
+  color: var(--color-icon);
+  fill: red;
+}

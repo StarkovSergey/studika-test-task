@@ -1,0 +1,13 @@
+.favourites {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px;
+  border-radius: 37px;
+  transition: 300ms background-color;
+}
+
+.favourites:hover,
+.favourites:focus-within {
+  background-color: var(--color-bg-grey-on-white);
+}

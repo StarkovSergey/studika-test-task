@@ -1,0 +1,34 @@
+@use "../configs/variables.scss";
+
+.region-menu {
+  display: none;
+
+  @media (min-width: variables.$desktop-width) {
+    display: block;
+  }
+}
+
+.region-menu__button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 180px;
+  text-align: left;
+}
+
+.region-menu__text {
+  display: block;
+  overflow: hidden;
+  font-size: var(--fz-descriptor);
+  line-height: var(--lh-descriptor);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.region-menu__icon {
+  color: var(--color-icon);
+
+  &:hover svg {
+    fill: var(--color-bg-shadow);
+  }
+}

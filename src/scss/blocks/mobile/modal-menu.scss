@@ -1,0 +1,72 @@
+.modal-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  visibility: visible;
+  transition: 500ms visibility;
+}
+
+.modal-menu__shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-shadow);
+  opacity: 1;
+  transition: 500ms opacity;
+}
+
+.modal-menu__content {
+  position: relative;
+  left: 0;
+  z-index: 1;
+  width: 300px;
+  height: 100%;
+  padding: 0 16px;
+  border-radius: 0 10px 10px 0;
+  background-color: var(--color-bg-white);
+  transition: 500ms left;
+  transition-delay: 200ms;
+}
+
+.modal-menu__region {
+  margin-bottom: 30px;
+}
+
+// close menu styles
+
+.nav-modal:not(.nav-modal--open) .nav-modal__modal-menu {
+  visibility: hidden;
+}
+
+.nav-modal:not(.nav-modal--open) .modal-menu__shadow {
+  opacity: 0;
+}
+
+.nav-modal:not(.nav-modal--open) .modal-menu__content {
+  left: -100%;
+  transition-delay: 0ms;
+}
+
+// profile-link
+
+.modal-menu__profile-link {
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+
+
+// close button
+
+.modal-menu__close-button {
+  position: absolute;
+  top: 10px;
+  right: -35px;
+  width: 30px;
+  height: 30px;
+}
+
+.modal-menu__close-icon {
+  fill: var(--color-bg-white);
+}

@@ -1,1 +1,36 @@
 @use "../configs/variables.scss";
+
+
+.header {
+  padding: 16px 0;
+  background-color: var(--color-bg-white);
+}
+
+.header__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: variables.$desktop-width) {
+    grid-template-columns: auto auto auto;
+    justify-content: start;
+  }
+}
+
+.header__logo {
+  justify-self: center;
+
+  @media (min-width: variables.$desktop-width) {
+    justify-self: start;
+    margin-right: 16px;
+  }
+}
+
+.header__favourites {
+  justify-self: end;
+}
+
+.header__region-menu {
+  margin-right: 16px;
+}

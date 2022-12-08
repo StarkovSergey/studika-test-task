@@ -1,45 +1,24 @@
+/* ------------------------------------ /
+  #CSS custom properties
+/* ------------------------------------ */
+
 :root {
-  --color-dark-3xl: #292929;
-  --color-dark-3xl-a60: rgb(41 41 41 / 60%);
-  --color-dark-2xl: #444444;
-  --color-dark-xl: #4c4c4c;
-  --color-dark-l: #545454;
-  --color-dark-m: #b2b2b2;
-  --color-dark-s: #cdcdcd;
-  --color-light-s: #fafafa;
-  --color-light-l: #f6f6f6;
-  --color-light-xl: #ffffff;
-  --color-primary: #f1cdb3;
-  --color-primary-light: #fddcc4;
-  --fz-nav-link: 15px;
-  --lh-nav-link: 24px;
-  --fz-strong-text: 44px;
-  --lh-strong-text: 57px;
-  --fz-section-text: 15px;
-  --lh-section-text: 24px;
-  --fz-section-title: 35px;
-  --lh-section-title: 45px;
-  --fz-slider-title: 20px;
-  --lh-slider-title: 23px;
-  --fz-button: 17px;
-  --lh-button: 22px;
-  --fz-main-text: 20px;
-  --lh-main-text: 23px;
+  --color-bg-white: #ffffff;
+  --color-bg-grey-on-white: #f1f1f1;
+  --color-bg-element: #e6e6e6;
+  --color-bg-shadow: rgb(34 34 34 / 80%);
+  --color-text-basic: #222222;
+  --color-text-descriptor: #767676;
+  --color-icon: #a7a7a7;
+  --color-outline: #d8d8d8;
+  --color-action-blue: #0656b4;
+  --fz-basic: 14px;
+  --lh-basic: 22px;
+  --fz-descriptor: 12px;
+  --lh-descriptor: 22px;
 }
 
-$desktop-width-only: 1280px;
-$laptop-width: 1279px;
-$tablet-width: 767px;
-
-@media (max-width: $tablet-width) {
-  :root {
-    --fz-nav-link: 32px;
-    --lh-nav-link: 51px;
-    --fz-strong-text: 25px;
-    --lh-strong-text: 32px;
-    --fz-main-text: 15px;
-    --lh-main-text: 16px;
-    --fz-section-title: 25px;
-    --lh-section-title: 32px;
-  }
-}
+/* ------------------------------------ /
+  #SCSS-variables
+/* ------------------------------------ */
+$desktop-width: 1000px;

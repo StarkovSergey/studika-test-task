@@ -18,17 +18,14 @@ a {
 }
 
 .page__body {
-  display: grid;
-  // grid-template-rows: min-content 1fr min-content;
-  grid-template-rows: 1fr min-content;
   min-height: 100%;
   margin: 0;
-  color: var(--color-dark-xl);
+  color: var(--color-text-basic);
   font-weight: 400;
   font-family: "Open Sans", sans-serif;
-  font-size: var(--fz-section-text);
-  line-height: var(--lh-section-text);
-  background-color: #ffffff;
+  font-size: var(--fz-basic);
+  line-height: var(--lh-basic);
+  background-color: var(--color-bg-grey-on-white);
 }
 
 img {
@@ -41,7 +38,6 @@ button {
   padding: 0;
   border: none; /* в норме есть обводка */
   font: inherit; /* в норме monospace */
-  font-size: 20px;
   background-color: transparent;
   cursor: pointer;
 }
@@ -60,32 +56,8 @@ button {
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 1216px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 8px;
 }
 
-.button {
-  display: inline-block;
-  padding: 13px 43px;
-  border: 2px solid var(--color-primary);
-  border-radius: 100px;
-  color: var(--color-dark-3xl);
-  font-size: var(--fz-button);
-  line-height: var(--lh-button);
-  letter-spacing: 0.06em;
-  text-align: center;
-  background-color: var(--color-primary);
-  cursor: pointer;
-  transition: background-color 200ms ease 0s, border-color 200ms ease 0s;
-
-  &:hover,
-  &:focus {
-    border-color: var(--color-primary-light);
-    background-color: var(--color-primary-light);
-  }
-
-  &--border {
-    background-color: transparent;
-  }
-}
