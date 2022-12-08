@@ -344,11 +344,13 @@ template {
   --color-text-descriptor: #767676;
   --color-icon: #a7a7a7;
   --color-outline: #d8d8d8;
+  --color-action-selected: #abc8ea;
   --color-action-blue: #0656b4;
   --fz-basic: 14px;
   --lh-basic: 22px;
   --fz-descriptor: 12px;
   --lh-descriptor: 22px;
+  --shadow: 0 7px 38px rgb(44 62 106 / 25%);
 }
 
 /* ------------------------------------ /
@@ -599,6 +601,7 @@ button {
 }
 
 .region {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -708,6 +711,7 @@ button {
 }
 
 .region-menu {
+  position: relative;
   display: none;
 }
 @media (min-width: 1000px) {
@@ -738,4 +742,95 @@ button {
 }
 .region-menu__icon:hover svg {
   fill: var(--color-bg-shadow);
+}
+
+.region-menu__modal {
+  position: absolute;
+  top: calc(100% + 16px);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 384px;
+  padding-top: 24px;
+  border-radius: 10px;
+  background-color: var(--color-bg-white);
+  box-shadow: var(--shadow);
+}
+.region-menu__modal.active {
+  display: flex;
+}
+
+.region-menu__input {
+  width: 352px;
+  padding: 14px 25px 12px;
+  border: 2px solid var(--color-outline);
+  border-radius: 100px;
+  font-size: var(--fz-basic);
+  line-height: var(--lh-basic);
+  outline: none;
+}
+
+.region-menu__input:hover,
+.region-menu__input:focus {
+  border-color: var(--color-action-selected);
+}
+
+.region-menu__save-button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 0 0 10px 10px;
+  color: var(--color-bg-white);
+  font-family: "Formular", sans-serif;
+  font-size: var(--fz-descriptor);
+  line-height: var(--lh-descriptor);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: var(--color-action-blue);
+}
+
+.region-menu__list {
+  width: 100%;
+  height: 223px;
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+}
+.region-menu__list::-webkit-scrollbar {
+  width: 8px;
+}
+.region-menu__list::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: var(--color-outline);
+}
+
+.region-menu__loader {
+  display: none;
+  padding: 10px;
+}
+.region-menu__loader.active {
+  display: block;
+}
+
+.region-menu__item ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.region-menu__item button {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 11px 16px;
+  text-align: left;
+  transition: 200ms background-color;
+}
+.region-menu__item button:hover, .region-menu__item button:focus {
+  background-color: var(--color-bg-grey-on-white);
+}
+
+.region-menu__subtitle {
+  color: var(--color-text-descriptor);
 }

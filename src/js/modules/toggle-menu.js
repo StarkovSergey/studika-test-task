@@ -9,7 +9,6 @@ const closeMenu = () => {
 }
 
 toggleButton.addEventListener('click', () => {
-  console.log(333)
   navigationElement.classList.toggle('nav-modal--open')
 
   if (navigationElement.classList.contains('nav-modal--open')) {
