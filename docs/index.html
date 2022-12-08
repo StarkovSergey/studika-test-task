@@ -101,8 +101,7 @@
         </button>
 
         <div class="region-menu__modal" data-region-modal>
-          <label class="visually-hidden" for="region-input">Выбор локации</label>
-          <input class="region-menu__input" id="region-input" placeholder="Регион, город, населенный пункт"
+          <input class="region-menu__input input" placeholder="Регион, город, населенный пункт"
                  type="search">
           <div class="region-menu__labels"></div>
           <div class="region-menu__loader" data-region-loader>
@@ -121,12 +120,27 @@
         </div>
       </div>
 
-      <a class="header__favourites favourites" href="">
+      <input class="input header__search" placeholder="Учебное заведение, специальность или профессия">
+
+      <a class="header__favourites favourites" href="#">
         <svg class="favourites__icon" height="14" width="15">
           <use xlink:href="img/icons/sprite.svg#favourites-icon"></use>
         </svg>
         <span class="favourites__count">1</span>
       </a>
+
+      <a class="header__profile-link profile-link" href="#">
+        <span class="profile-link__name">Екатерина</span>
+        <div class="profile-link__image">
+          <img
+            alt="ваш аватар"
+            height="32"
+            src="img/content/avatar.png"
+            width="32"
+          />
+        </div>
+      </a>
+
     </div>
   </header>
 

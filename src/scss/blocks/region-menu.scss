@@ -39,8 +39,8 @@
 
 .region-menu__modal {
   position: absolute;
-  top: calc(100% + 16px);
-  display: none;
+  top: 200%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: 384px;
@@ -48,26 +48,22 @@
   border-radius: 10px;
   background-color: var(--color-bg-white);
   box-shadow: var(--shadow);
+  visibility: hidden;
+  opacity: 0;
+
 
   &.active {
-    display: flex;
+    top: calc(100% + 16px);
+    visibility: visible;
+    opacity: 1;
+    transition: 200ms;
   }
 }
 
 .region-menu__input {
   width: 352px;
-  padding: 14px 25px 12px;
-  border: 2px solid var(--color-outline);
-  border-radius: 100px;
-  font-size: var(--fz-basic);
-  line-height: var(--lh-basic);
-  outline: none;
 }
 
-.region-menu__input:hover,
-.region-menu__input:focus {
-  border-color: var(--color-action-selected);
-}
 
 .region-menu__save-button {
   width: 100%;
@@ -90,15 +86,6 @@
   padding: 0;
   overflow: auto;
   list-style: none;
-
-  //&::-webkit-scrollbar {
-  //  width: 8px;
-  //}
-  //
-  //&::-webkit-scrollbar-thumb {
-  //  border-radius: 5px;
-  //  background: var(--color-outline);
-  //}
 }
 
 .region-menu__loader {
@@ -111,7 +98,6 @@
 }
 
 .region-menu__item {
-
   ul {
     margin: 0;
     padding: 0;

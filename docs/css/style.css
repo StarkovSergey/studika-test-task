@@ -635,6 +635,18 @@ button {
   -ms-overflow-style: none;
 }
 
+.input {
+  padding: 14px 25px 12px;
+  border: 2px solid var(--color-outline);
+  border-radius: 100px;
+  font-size: var(--fz-basic);
+  line-height: var(--lh-basic);
+  outline: none;
+}
+.input:focus {
+  border-color: var(--color-action-selected);
+}
+
 .header {
   padding: 16px 0;
   background-color: var(--color-bg-white);
@@ -648,7 +660,7 @@ button {
 }
 @media (min-width: 1000px) {
   .header__container {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto 1fr auto auto;
     justify-content: start;
   }
 }
@@ -665,10 +677,49 @@ button {
 
 .header__favourites {
   justify-self: end;
+  margin-right: 0;
+}
+@media (min-width: 1150px) {
+  .header__favourites {
+    margin-right: 30px;
+  }
 }
 
 .header__region-menu {
   margin-right: 16px;
+}
+
+.header__search {
+  display: none;
+  width: 100%;
+  max-width: 592px;
+  margin-right: 20px;
+  border-color: var(--color-bg-grey-on-white);
+  background-color: var(--color-bg-grey-on-white);
+  transition: 200ms background-color;
+}
+.header__search::-moz-placeholder {
+  text-align: center;
+}
+.header__search::placeholder {
+  text-align: center;
+}
+.header__search:focus {
+  background-color: transparent;
+}
+@media (min-width: 1000px) {
+  .header__search {
+    display: block;
+  }
+}
+
+.header__profile-link.profile-link {
+  display: none;
+}
+@media (min-width: 1000px) {
+  .header__profile-link.profile-link {
+    display: flex;
+  }
 }
 
 @media (min-width: 1000px) {
@@ -778,6 +829,7 @@ button {
   right: -35px;
   width: 30px;
   height: 30px;
+  color: white;
 }
 
 .modal-menu__close-icon {
@@ -963,8 +1015,8 @@ button {
 
 .region-menu__modal {
   position: absolute;
-  top: calc(100% + 16px);
-  display: none;
+  top: 200%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: 384px;
@@ -972,24 +1024,18 @@ button {
   border-radius: 10px;
   background-color: var(--color-bg-white);
   box-shadow: var(--shadow);
+  visibility: hidden;
+  opacity: 0;
 }
 .region-menu__modal.active {
-  display: flex;
+  top: calc(100% + 16px);
+  visibility: visible;
+  opacity: 1;
+  transition: 200ms;
 }
 
 .region-menu__input {
   width: 352px;
-  padding: 14px 25px 12px;
-  border: 2px solid var(--color-outline);
-  border-radius: 100px;
-  font-size: var(--fz-basic);
-  line-height: var(--lh-basic);
-  outline: none;
-}
-
-.region-menu__input:hover,
-.region-menu__input:focus {
-  border-color: var(--color-action-selected);
 }
 
 .region-menu__save-button {

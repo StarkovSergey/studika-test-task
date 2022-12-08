@@ -13,7 +13,7 @@
   align-items: center;
 
   @media (min-width: variables.$desktop-width) {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto 1fr auto auto;
     justify-content: start;
   }
 }
@@ -29,8 +29,43 @@
 
 .header__favourites {
   justify-self: end;
+  margin-right: 0;
+
+  @media (min-width: 1150px) {
+    margin-right: 30px;
+  }
 }
 
 .header__region-menu {
   margin-right: 16px;
+}
+
+.header__search {
+  display: none;
+  width: 100%;
+  max-width: 592px;
+  margin-right: 20px;
+  border-color: var(--color-bg-grey-on-white);
+  background-color: var(--color-bg-grey-on-white);
+  transition: 200ms background-color;
+
+  &::placeholder {
+    text-align: center;
+  }
+
+  &:focus {
+    background-color: transparent;
+  }
+
+  @media (min-width: variables.$desktop-width) {
+    display: block;
+  }
+}
+
+.header__profile-link.profile-link {
+  display: none;
+
+  @media (min-width: variables.$desktop-width) {
+    display: flex;
+  }
 }

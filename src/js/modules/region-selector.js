@@ -21,6 +21,7 @@ export class RegionSelector {
     this.buttons.forEach(button => {
       button.addEventListener('click', this.clickHandler)
     })
+    this.modalMenus
   }
 
   renderTextElements() {
