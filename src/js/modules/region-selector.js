@@ -1,3 +1,4 @@
+import SimpleBar from 'simplebar'
 import { createRegionListTemplate } from './createRegionListTemplate.js'
 
 export class RegionSelector {
@@ -68,6 +69,10 @@ export class RegionSelector {
   renderList() {
     this.containers.forEach(container => {
       container.innerHTML = createRegionListTemplate(this.regions)
+    })
+
+    this.containers.forEach(container => {
+      new SimpleBar(container)
     })
 
   }

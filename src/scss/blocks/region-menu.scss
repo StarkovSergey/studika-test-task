@@ -91,14 +91,14 @@
   overflow: auto;
   list-style: none;
 
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: var(--color-outline);
-  }
+  //&::-webkit-scrollbar {
+  //  width: 8px;
+  //}
+  //
+  //&::-webkit-scrollbar-thumb {
+  //  border-radius: 5px;
+  //  background: var(--color-outline);
+  //}
 }
 
 .region-menu__loader {

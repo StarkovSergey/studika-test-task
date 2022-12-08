@@ -2,6 +2,8 @@
 @use "configs/fonts.scss";
 @use "global.scss";
 
+@use "libs/scroll.scss";
+
 @use "blocks/global/section.scss";
 @use "blocks/header.scss";
 @use "blocks/mobile/nav-modal.scss";
