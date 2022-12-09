@@ -1,6 +1,7 @@
 import SimpleBar from 'simplebar'
-import { createLabelsTemplate, templatesCreators } from './templates-creators.js'
-import { applyOccurrence, getCookie, isOccurrence, setCookie } from '../utils/util.js'
+import { createLabelsTemplate, createRegionTemplate } from './templates-creators.js'
+import { applyOccurrence, isOccurrence } from '../utils/util.js'
+import { getCookie, setCookie } from '../utils/cookie.js'
 
 export class RegionSelector {
   chosenRegions = []
@@ -31,10 +32,10 @@ export class RegionSelector {
     this.saveButton.addEventListener('click', this.saveButtonClickHandler)
     this.input.addEventListener('keyup', this.inputKeyUpHandler)
 
-    this.renderTextElements()
+    this.#renderTextElements()
   }
 
-  renderTextElements() {
+  #renderTextElements() {
     this.textElement.innerText = JSON.parse(getCookie('region'))[0].name
   }
 
@@ -46,8 +47,21 @@ export class RegionSelector {
     this.loader.classList.remove('active')
   }
 
-  clickHandler() {
+  clickHandler(evt) {
     this.modalMenu.classList.toggle('active')
+    evt.stopImmediatePropagation()
+
+    const handler = (e) => {
+      if (!e.target.closest('[data-region-modal]')) {
+        this.modalMenu.classList.remove('active')
+
+        document.removeEventListener('click', handler)
+      }
+    }
+
+    if (this.modalMenu.classList.contains('active')) {
+      document.addEventListener('click', handler)
+    }
 
     if (this.regions.length === 0) this.#getData()
   }
@@ -127,7 +141,7 @@ export class RegionSelector {
         console.warn(e)
       })
 
-    this.renderTextElements()
+    this.#renderTextElements()
     this.modalMenu.classList.toggle('active')
   }
 
@@ -138,7 +152,7 @@ export class RegionSelector {
   renderList() {
     const searchText = this.input.value
 
-    this.container.innerHTML = templatesCreators(this.filteredRegions, searchText)
+    this.container.innerHTML = createRegionTemplate(this.filteredRegions, searchText)
     new SimpleBar(this.container)
   }
 }

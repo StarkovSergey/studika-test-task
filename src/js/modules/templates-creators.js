@@ -1,4 +1,4 @@
-export const createCitiesListTemplate = (cities, region) => cities
+export const createCityTemplate = (cities, region) => cities
   .map(city => `<li  class="region-menu__item region-menu__item--city" id="${city.id}">
         <button data-region-type="city" id="${city.id}" data-region-name="${city.name}">
           <span class="region-menu__title">${city.name}</span>
@@ -7,7 +7,7 @@ export const createCitiesListTemplate = (cities, region) => cities
       </li>`)
   .join('')
 
-export const templatesCreators = (regions) => regions.map(region => {
+export const createRegionTemplate = (regions) => regions.map(region => {
   if (region.type === 'country') {
     return `<li class="region-menu__item">
          <button data-region-type="country" data-region-name="${region.name}" id="${region.id}">${region.name}</button>
@@ -15,7 +15,7 @@ export const templatesCreators = (regions) => regions.map(region => {
   }
   return `<li class="region-menu__item">
 <button data-region-type="area" id="${region.id}" data-region-name="${region.name}">${region.name}</button>
-<ul>${createCitiesListTemplate(region.cities, region.name)}</ul>
+<ul>${createCityTemplate(region.cities, region.name)}</ul>
 </li>`
 })
   .join('')
