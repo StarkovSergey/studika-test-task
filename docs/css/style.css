@@ -1061,6 +1061,13 @@ button {
   letter-spacing: 2px;
   text-transform: uppercase;
   background-color: var(--color-action-blue);
+  transition: 300ms background-color;
+}
+.region-menu__save-button:disabled {
+  border-top: 1px solid var(--color-outline);
+  color: var(--color-text-descriptor);
+  background-color: var(--color-bg-white);
+  cursor: auto;
 }
 
 .region-menu__list {

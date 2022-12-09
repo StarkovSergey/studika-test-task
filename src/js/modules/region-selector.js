@@ -33,10 +33,18 @@ export class RegionSelector {
     this.input.addEventListener('keyup', this.inputKeyUpHandler)
 
     this.#renderTextElements()
+
+    if (!this.chosenRegions.length) {
+      this.saveButton.disabled = true
+    }
   }
 
   #renderTextElements() {
-    this.textElement.innerText = JSON.parse(getCookie('region'))[0].name
+    const cookieData = getCookie('region')
+    if (cookieData) {
+      const regions = JSON.parse(getCookie('region'))
+      if (regions.length) this.textElement.innerText = JSON.parse(getCookie('region'))[0].name
+    }
   }
 
   showLoader() {
@@ -52,7 +60,7 @@ export class RegionSelector {
     evt.stopImmediatePropagation()
 
     const handler = (e) => {
-      if (!e.target.closest('[data-region-modal]')) {
+      if (!e.target.closest('[data-region-modal]') && !e.target.classList.contains('label__button')) {
         this.modalMenu.classList.remove('active')
 
         document.removeEventListener('click', handler)
@@ -72,12 +80,14 @@ export class RegionSelector {
     if (buttonElement) {
 
       if (this.chosenRegions.some(region => region.id === buttonElement.id)) {
-        this.chosenRegions = this.chosenRegions.filter(region => region.id !== buttonElement.id)
+        const chosenRegions = this.chosenRegions.filter(region => region.id !== buttonElement.id)
+        this.setRegions(chosenRegions)
       } else {
-        this.chosenRegions.push({
+        const chosenRegions = [...this.chosenRegions, {
           name: buttonElement.dataset.regionName,
           id: buttonElement.id,
-        })
+        }]
+        this.setRegions(chosenRegions)
       }
 
       this.renderLabels()
@@ -86,9 +96,15 @@ export class RegionSelector {
 
   labelsClickHandler(e) {
     if (e.target.nodeName.toLowerCase() === 'button') {
-      this.chosenRegions = this.chosenRegions.filter(region => region.id !== e.target.dataset.labelId)
+      const chosenRegions = this.chosenRegions.filter(region => region.id !== e.target.dataset.labelId)
+      this.setRegions(chosenRegions)
       this.renderLabels()
     }
+  }
+
+  setRegions(regions) {
+    this.chosenRegions = regions
+    this.saveButton.disabled = this.chosenRegions.length === 0
   }
 
   inputKeyUpHandler(e) {
@@ -131,7 +147,7 @@ export class RegionSelector {
   saveButtonClickHandler() {
     setCookie('region', JSON.stringify(this.chosenRegions))
 
-    fetch(`https://studika.ru/api`, {
+    fetch(`https://node-js-express-ioc-containers.vercel.app/blogs`, {
       method: 'post',
       headers: {
         withCredentials: true,
