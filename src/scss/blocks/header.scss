@@ -11,6 +11,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
   align-items: center;
+  grid-row-gap: 8px;
 
   @media (min-width: variables.$desktop-width) {
     grid-template-columns: auto auto 1fr auto auto;
@@ -67,5 +68,14 @@
 
   @media (min-width: variables.$desktop-width) {
     display: flex;
+  }
+}
+
+.header__nav {
+  display: none;
+  grid-column: 1 / -1;
+
+  @media (min-width: variables.$desktop-width) {
+    display: block;
   }
 }

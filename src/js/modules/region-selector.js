@@ -1,6 +1,6 @@
 import SimpleBar from 'simplebar'
 import { createLabelsTemplate, templatesCreators } from './templates-creators.js'
-import { getCookie, setCookie } from './util.js'
+import { applyOccurrence, getCookie, isOccurrence, setCookie } from '../utils/util.js'
 
 export class RegionSelector {
   chosenRegions = []
@@ -13,19 +13,23 @@ export class RegionSelector {
     this.modalMenu = modalMenu
     this.loader = loader
     this.container = container
+    this.filteredRegions = regions
 
     this.labels = modalMenu.querySelector('[data-region-labels]')
     this.saveButton = modalMenu.querySelector('[data-region-save]')
+    this.input = modalMenu.querySelector('[data-region-input]')
 
     this.clickHandler = this.clickHandler.bind(this)
     this.clickRegionHandler = this.clickRegionHandler.bind(this)
     this.labelsClickHandler = this.labelsClickHandler.bind(this)
     this.saveButtonClickHandler = this.saveButtonClickHandler.bind(this)
+    this.inputKeyUpHandler = this.inputKeyUpHandler.bind(this)
 
     this.container.addEventListener('click', this.clickRegionHandler)
     this.button.addEventListener('click', this.clickHandler)
     this.labels.addEventListener('click', this.labelsClickHandler)
     this.saveButton.addEventListener('click', this.saveButtonClickHandler)
+    this.input.addEventListener('keyup', this.inputKeyUpHandler)
 
     this.renderTextElements()
   }
@@ -73,6 +77,24 @@ export class RegionSelector {
     }
   }
 
+  inputKeyUpHandler(e) {
+    const buttons = this.container.querySelectorAll('button')
+    buttons.forEach(button => {
+      if (isOccurrence(e.target.value, button.dataset.regionName)) {
+        button.classList.remove('hide')
+
+        if (button.dataset.regionType === 'city') {
+          button.querySelector('.region-menu__title').innerHTML = applyOccurrence(e.target.value, button.dataset.regionName)
+          button.querySelector('.region-menu__subtitle').innerHTML = applyOccurrence(e.target.value, button.dataset.regionName)
+        } else {
+          button.innerHTML = applyOccurrence(e.target.value, button.dataset.regionName)
+        }
+      } else {
+        button.classList.add('hide')
+      }
+    })
+  }
+
   #getData() {
     this.showLoader()
     fetch(`https://studika.ru/api/areas`, {
@@ -81,6 +103,7 @@ export class RegionSelector {
       .then((response) => response.json())
       .then(regions => {
         this.regions = regions
+        this.filteredRegions = regions
         this.subscribe(this.regions)
         this.renderList()
         this.hideLoader()
@@ -113,7 +136,9 @@ export class RegionSelector {
   }
 
   renderList() {
-    this.container.innerHTML = templatesCreators(this.regions)
+    const searchText = this.input.value
+
+    this.container.innerHTML = templatesCreators(this.filteredRegions, searchText)
     new SimpleBar(this.container)
   }
 }

@@ -40,6 +40,7 @@
 .region-menu__modal {
   position: absolute;
   top: 200%;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,7 +54,7 @@
 
 
   &.active {
-    top: calc(100% + 16px);
+    top: calc(100% + 20px);
     visibility: visible;
     opacity: 1;
     transition: 200ms;
@@ -106,16 +107,27 @@
 }
 
 .region-menu__item button {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   padding: 11px 16px;
   text-align: left;
   transition: 200ms background-color;
 
+  &[data-region-type="city"] {
+    display: flex;
+    flex-direction: column;
+  }
+
   &:hover,
   &:focus {
     background-color: var(--color-bg-grey-on-white);
+  }
+
+  &.hide {
+    display: none;
+  }
+
+  b {
+    color: var(--color-action-blue)
   }
 }
 
