@@ -2,8 +2,12 @@
 
 
 .header {
-  padding: 16px 0;
+  padding: 16px;
   background-color: var(--color-bg-white);
+
+  @media (min-width: variables.$desktop-width) {
+    padding-bottom: 0;
+  }
 }
 
 .header__container {
@@ -30,7 +34,7 @@
 
 .header__favourites {
   justify-self: end;
-  margin-right: 0;
+  margin-right: 3px;
 
   @media (min-width: 1150px) {
     margin-right: 30px;

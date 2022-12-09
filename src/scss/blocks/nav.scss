@@ -1,8 +1,9 @@
 .nav {
   position: relative;
   max-width: 1200px;
-  padding: 16px 0;
-  overflow-x: hidden;
+  padding: 6px 0;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .nav__list {
@@ -15,6 +16,8 @@
 }
 
 .nav__item {
+  position: relative;
+
   &--active .nav__link {
     background-color: var(--color-bg-grey-on-white);
   }
@@ -23,8 +26,14 @@
 .nav__link {
   display: block;
   width: max-content;
-  padding: 3px 10px;
+  padding: 10px;
   border-radius: 34px;
+  transition: 200ms opacity;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
 }
 
 .nav__controls {
@@ -50,12 +59,12 @@
   pointer-events: auto;
 
   &--left {
-    box-shadow: -20px 0px 15px var(--color-bg-white);
+    box-shadow: -20px 0 15px var(--color-bg-white);
     transform: rotate(180deg);
   }
 
   &--right {
-    box-shadow: -20px 0px 15px var(--color-bg-white);
+    box-shadow: -20px 0 15px var(--color-bg-white);
   }
 }
 
@@ -65,4 +74,35 @@
 
 .nav:not(.nav--right-shift) .nav__button--left {
   visibility: hidden;
+}
+
+.nav__link:hover ~ .nav__modal-list,
+.nav__modal-list:hover {
+  visibility: visible;
+}
+
+.nav__modal-list {
+  position: absolute;
+  top: calc(100%);
+  z-index: 2;
+  width: 136px;
+  margin: 0;
+  padding: 7px 14px;
+  list-style: none;
+  visibility: hidden;
+
+  li + li {
+    margin-top: 2px;
+  }
+
+  a {
+    display: block;
+    padding: 5px 0;
+    transition: 200ms opacity;
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+  }
 }

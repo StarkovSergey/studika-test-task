@@ -10,3 +10,9 @@
     border-color: var(--color-action-selected);
   }
 }
+
+.modal {
+  border-radius: 10px;
+  background-color: var(--color-bg-white);
+  box-shadow: var(--shadow);
+}

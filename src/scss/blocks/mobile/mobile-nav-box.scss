@@ -40,6 +40,12 @@
   line-height: var(--lh-descriptor);
   letter-spacing: 2px;
   text-transform: uppercase;
+  transition: 200ms color;
+
+  &:hover,
+  &:focus {
+    color: var(--color-action-blue);
+  }
 }
 
 .mobile-link-list {

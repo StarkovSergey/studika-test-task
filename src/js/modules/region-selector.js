@@ -43,7 +43,11 @@ export class RegionSelector {
     const cookieData = getCookie('region')
     if (cookieData) {
       const regions = JSON.parse(getCookie('region'))
-      if (regions.length) this.textElement.innerText = JSON.parse(getCookie('region'))[0].name
+      if (regions.length) {
+        this.textElement.innerText = JSON.parse(getCookie('region'))
+          .map(item => item.name)
+          .join(', ')
+      }
     }
   }
 

@@ -93,6 +93,7 @@
       </a>
 
       <div class="header__region-menu region-menu">
+
         <button class="region-menu__button" data-region-button>
           <svg class="region-menu__icon" height="32" width="32">
             <use xlink:href="img/icons/sprite.svg#compass-icon"></use>
@@ -100,7 +101,7 @@
           <span class="region-menu__text" data-region>Любой регион</span>
         </button>
 
-        <div class="region-menu__modal" data-region-modal>
+        <div class="region-menu__modal modal" data-region-modal>
           <input class="region-menu__input input" data-region-input
                  placeholder="Регион, город, населенный пункт" type="search">
           <div class="region-menu__labels" data-region-labels></div>
@@ -118,6 +119,7 @@
           </ul>
           <button class="region-menu__save-button" data-region-save>Сохранить</button>
         </div>
+
       </div>
 
       <input class="input header__search" placeholder="Учебное заведение, специальность или профессия">
@@ -142,40 +144,50 @@
       </a>
 
       <nav class="header__nav nav">
-        <ul class="nav__list">
-          <li class="nav__item nav__item--active">
-            <a class="nav__link" href="">Вузы</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="">Колледжи</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="">Техникумы</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="">Училища</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="">Специальности</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="">Профессии</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="">Отзывы</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="">Учебным заведениям</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="">Тест на профориентацию</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="">Высшее</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="">Среднее</a>
-          </li>
+        <div class="nav__content">
+          <ul class="nav__list">
+            <li class="nav__item nav__item--active">
+              <a class="nav__link" href="">Вузы</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="">Колледжи</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="">Техникумы</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="">Училища</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="">Специальности</a>
+              <ul class="nav__modal-list modal">
+                <li>
+                  <a href="">Высшее</a>
+                </li>
+                <li>
+                  <a href="">Среднее</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="">Профессии</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="">Отзывы</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="">Учебным заведениям</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="">Тест на профориентацию</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="">Высшее</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="">Среднее</a>
+            </li>
+        </div>
         </ul>
         <div class="nav__controls">
           <button class="nav__button nav__button--left"></button>
