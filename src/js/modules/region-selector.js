@@ -44,9 +44,10 @@ export class RegionSelector {
     if (cookieData) {
       const regions = JSON.parse(getCookie('region'))
       if (regions.length) {
-        this.textElement.innerText = JSON.parse(getCookie('region'))
-          .map(item => item.name)
-          .join(', ')
+        this.subscribe({ currentLocations: regions })
+        // this.textElement.innerText = JSON.parse(getCookie('region'))
+        //   .map(item => item.name)
+        //   .join(', ')
       }
     }
   }
@@ -138,7 +139,7 @@ export class RegionSelector {
       .then(regions => {
         this.regions = regions
         this.filteredRegions = regions
-        this.subscribe(this.regions)
+        this.subscribe({ regions: this.regions })
         this.renderList()
         this.hideLoader()
       })

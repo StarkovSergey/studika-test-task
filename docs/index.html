@@ -41,15 +41,36 @@
                 </div>
               </a>
 
-              <button class="modal-menu__region region" data-region-button>
+              <div class="region-menu  region-menu--mobile">
+                <button class="modal-menu__region region" data-region-button>
                 <span class="region__text">
                   <span class="region__label">Город или регион</span>
                   <span class="region__chosen" data-region>Любой регион</span>
                 </span>
-                <svg class="region__icon" height="32" width="32">
-                  <use xlink:href="img/icons/sprite.svg#compass-icon"></use>
-                </svg>
-              </button>
+                  <svg class="region__icon" height="32" width="32">
+                    <use xlink:href="img/icons/sprite.svg#compass-icon"></use>
+                  </svg>
+                </button>
+
+                <div class="region-menu__modal modal" data-region-modal>
+                  <input class="region-menu__input input" data-region-input
+                         placeholder="Регион, город, населенный пункт" type="search">
+                  <div class="region-menu__labels" data-region-labels></div>
+                  <div class="region-menu__loader" data-region-loader>
+                    <svg height="50px" preserveAspectRatio="xMidYMid"
+                         style="margin: auto; display: block; shape-rendering: auto;" viewBox="0 0 100 100" width="50px"
+                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <path d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#85a2b6" stroke="none">
+                        <animateTransform attributeName="transform" dur="1s" keyTimes="0;1" repeatCount="indefinite"
+                                          type="rotate" values="0 50 51;360 50 51"></animateTransform>
+                      </path>
+                    </svg>
+                  </div>
+                  <ul class="region-menu__list" data-region-container>
+                  </ul>
+                  <button class="region-menu__save-button" data-region-save>Сохранить</button>
+                </div>
+              </div>
 
               <div class="mobile-nav-box">
                 <ul class="mobile-nav-box__categories-list">

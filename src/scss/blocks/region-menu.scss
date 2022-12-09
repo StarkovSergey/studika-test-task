@@ -2,12 +2,6 @@
 
 .region-menu {
   position: relative;
-  display: none;
-  width: 134px;
-
-  @media (min-width: variables.$desktop-width) {
-    display: block;
-  }
 }
 
 .region-menu__button {

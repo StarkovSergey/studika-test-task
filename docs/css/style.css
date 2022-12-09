@@ -698,7 +698,14 @@ button {
 }
 
 .header__region-menu {
+  display: none;
+  width: 134px;
   margin-right: 16px;
+}
+@media (min-width: 1000px) {
+  .header__region-menu {
+    display: block;
+  }
 }
 
 .header__search {
@@ -1011,13 +1018,6 @@ button {
 
 .region-menu {
   position: relative;
-  display: none;
-  width: 134px;
-}
-@media (min-width: 1000px) {
-  .region-menu {
-    display: block;
-  }
 }
 
 .region-menu__button {

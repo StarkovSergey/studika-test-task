@@ -42,7 +42,15 @@
 }
 
 .header__region-menu {
+  display: none;
+  width: 134px;
+
+
   margin-right: 16px;
+
+  @media (min-width: variables.$desktop-width) {
+    display: block;
+  }
 }
 
 .header__search {
