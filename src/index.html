@@ -12,7 +12,7 @@
 <body class="page__body">
   <header class="header">
     <div class="container header__container">
-      <nav class="nav-modal nav-modal--open">
+      <nav class="nav-modal">
         <div class="nav-modal__box">
           <button aria-label="переключить меню" class="menu-button">
             <span class="menu-button__lines"></span>
@@ -103,7 +103,7 @@
         <div class="region-menu__modal" data-region-modal>
           <input class="region-menu__input input" placeholder="Регион, город, населенный пункт"
                  type="search">
-          <div class="region-menu__labels"></div>
+          <div class="region-menu__labels" data-region-labels></div>
           <div class="region-menu__loader" data-region-loader>
             <svg height="50px" preserveAspectRatio="xMidYMid"
                  style="margin: auto; display: block; shape-rendering: auto;" viewBox="0 0 100 100" width="50px"
@@ -116,7 +116,7 @@
           </div>
           <ul class="region-menu__list" data-region-container>
           </ul>
-          <button class="region-menu__save-button">Сохранить</button>
+          <button class="region-menu__save-button" data-region-save>Сохранить</button>
         </div>
       </div>
 

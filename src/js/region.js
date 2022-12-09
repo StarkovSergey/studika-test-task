@@ -1,9 +1,16 @@
 import { RegionSelector } from './modules/region-selector.js'
 
-const textElements = document.querySelectorAll('[data-region]')
-const buttons = document.querySelectorAll('[data-region-button]')
-const modalMenus = document.querySelectorAll('[data-region-modal]')
-const loaders = document.querySelectorAll('[data-region-loader]')
-const containers = document.querySelectorAll('[data-region-container]')
+const textElement = document.querySelector('.region-menu [data-region]')
+const button = document.querySelector('.region-menu [data-region-button]')
+const modalMenu = document.querySelector('.region-menu [data-region-modal]')
+const loader = document.querySelector('.region-menu [data-region-loader]')
+const container = document.querySelector('.region-menu [data-region-container]')
 
-const regionSelector = new RegionSelector(textElements, buttons, modalMenus, loaders, containers)
+const dataRegions = {
+  regions: [],
+  changeData(data) {
+    this.regions = data
+  },
+}
+
+const regionSelector = new RegionSelector((data) => dataRegions.changeData(data), dataRegions.regions, textElement, button, modalMenu, loader, container)

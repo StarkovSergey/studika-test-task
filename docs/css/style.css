@@ -1090,3 +1090,33 @@ button {
 .region-menu__subtitle {
   color: var(--color-text-descriptor);
 }
+
+.labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0;
+  padding: 12px 16px;
+  list-style: none;
+}
+
+.labels__item {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 17px;
+  border-radius: 50px;
+  color: var(--color-bg-white);
+  background-color: var(--color-action-blue);
+}
+
+.label__button {
+  width: 14px;
+  height: 14px;
+  padding: 3px;
+  color: white;
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='current' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z' fill='white'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-size: contain;
+}

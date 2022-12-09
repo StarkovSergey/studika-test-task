@@ -1,53 +1,76 @@
 import SimpleBar from 'simplebar'
-import { createRegionListTemplate } from './createRegionListTemplate.js'
+import { createLabelsTemplate, templatesCreators } from './templates-creators.js'
+import { getCookie, setCookie } from './util.js'
 
 export class RegionSelector {
-  regions
-  currentLocation
-  textElements
-  buttons
-  loaders
-  containers
+  chosenRegions = []
 
-  constructor(textElements, buttons, modalMenus, loaders, containers) {
-    this.textElements = textElements
-    this.buttons = buttons
-    this.modalMenus = modalMenus
-    this.loaders = loaders
-    this.containers = containers
+  constructor(subscribe, regions, textElement, button, modalMenu, loader, container) {
+    this.subscribe = subscribe
+    this.regions = regions
+    this.textElement = textElement
+    this.button = button
+    this.modalMenu = modalMenu
+    this.loader = loader
+    this.container = container
+
+    this.labels = modalMenu.querySelector('[data-region-labels]')
+    this.saveButton = modalMenu.querySelector('[data-region-save]')
 
     this.clickHandler = this.clickHandler.bind(this)
+    this.clickRegionHandler = this.clickRegionHandler.bind(this)
+    this.labelsClickHandler = this.labelsClickHandler.bind(this)
+    this.saveButtonClickHandler = this.saveButtonClickHandler.bind(this)
 
-    this.buttons.forEach(button => {
-      button.addEventListener('click', this.clickHandler)
-    })
-    this.modalMenus
+    this.container.addEventListener('click', this.clickRegionHandler)
+    this.button.addEventListener('click', this.clickHandler)
+    this.labels.addEventListener('click', this.labelsClickHandler)
+    this.saveButton.addEventListener('click', this.saveButtonClickHandler)
+
+    this.renderTextElements()
   }
 
   renderTextElements() {
-    this.textElements.forEach(element => {
-      element.innerText = this.currentLocation
-    })
+    this.textElement.innerText = JSON.parse(getCookie('region'))[0].name
   }
 
   showLoader() {
-    this.loaders.forEach(loader => {
-      loader.classList.add('active')
-    })
+    this.loader.classList.add('active')
   }
 
   hideLoader() {
-    this.loaders.forEach(loader => {
-      loader.classList.remove('active')
-    })
+    this.loader.classList.remove('active')
   }
 
-  clickHandler(event) {
-    this.modalMenus.forEach(modal => {
-      modal.classList.toggle('active')
-    })
+  clickHandler() {
+    this.modalMenu.classList.toggle('active')
 
-    if (!this.regions) this.#getData()
+    if (this.regions.length === 0) this.#getData()
+  }
+
+  clickRegionHandler(e) {
+    const buttonElement = e.target.closest('button')
+
+    if (buttonElement) {
+
+      if (this.chosenRegions.some(region => region.id === buttonElement.id)) {
+        this.chosenRegions = this.chosenRegions.filter(region => region.id !== buttonElement.id)
+      } else {
+        this.chosenRegions.push({
+          name: buttonElement.dataset.regionName,
+          id: buttonElement.id,
+        })
+      }
+
+      this.renderLabels()
+    }
+  }
+
+  labelsClickHandler(e) {
+    if (e.target.nodeName.toLowerCase() === 'button') {
+      this.chosenRegions = this.chosenRegions.filter(region => region.id !== e.target.dataset.labelId)
+      this.renderLabels()
+    }
   }
 
   #getData() {
@@ -58,6 +81,7 @@ export class RegionSelector {
       .then((response) => response.json())
       .then(regions => {
         this.regions = regions
+        this.subscribe(this.regions)
         this.renderList()
         this.hideLoader()
       })
@@ -67,14 +91,29 @@ export class RegionSelector {
       })
   }
 
+  saveButtonClickHandler() {
+    setCookie('region', JSON.stringify(this.chosenRegions))
+
+    fetch(`https://studika.ru/api`, {
+      method: 'post',
+      headers: {
+        withCredentials: true,
+      },
+    })
+      .catch(e => {
+        console.warn(e)
+      })
+
+    this.renderTextElements()
+    this.modalMenu.classList.toggle('active')
+  }
+
+  renderLabels() {
+    this.labels.innerHTML = createLabelsTemplate(this.chosenRegions)
+  }
+
   renderList() {
-    this.containers.forEach(container => {
-      container.innerHTML = createRegionListTemplate(this.regions)
-    })
-
-    this.containers.forEach(container => {
-      new SimpleBar(container)
-    })
-
+    this.container.innerHTML = templatesCreators(this.regions)
+    new SimpleBar(this.container)
   }
 }
