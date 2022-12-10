@@ -6,10 +6,9 @@ import { getCookie, setCookie } from '../utils/cookie.js'
 export class RegionSelector {
   chosenRegions = []
 
-  constructor(subscribe, regions, textElement, button, modalMenu, loader, container) {
+  constructor(subscribe, regions, button, modalMenu, loader, container) {
     this.subscribe = subscribe
     this.regions = regions
-    this.textElement = textElement
     this.button = button
     this.modalMenu = modalMenu
     this.loader = loader
@@ -45,18 +44,15 @@ export class RegionSelector {
       const regions = JSON.parse(getCookie('region'))
       if (regions.length) {
         this.subscribe({ currentLocations: regions })
-        // this.textElement.innerText = JSON.parse(getCookie('region'))
-        //   .map(item => item.name)
-        //   .join(', ')
       }
     }
   }
 
-  showLoader() {
+  #showLoader() {
     this.loader.classList.add('active')
   }
 
-  hideLoader() {
+  #hideLoader() {
     this.loader.classList.remove('active')
   }
 
@@ -86,28 +82,28 @@ export class RegionSelector {
 
       if (this.chosenRegions.some(region => region.id === buttonElement.id)) {
         const chosenRegions = this.chosenRegions.filter(region => region.id !== buttonElement.id)
-        this.setRegions(chosenRegions)
+        this.#setRegions(chosenRegions)
       } else {
         const chosenRegions = [...this.chosenRegions, {
           name: buttonElement.dataset.regionName,
           id: buttonElement.id,
         }]
-        this.setRegions(chosenRegions)
+        this.#setRegions(chosenRegions)
       }
 
-      this.renderLabels()
+      this.#renderLabels()
     }
   }
 
   labelsClickHandler(e) {
     if (e.target.nodeName.toLowerCase() === 'button') {
       const chosenRegions = this.chosenRegions.filter(region => region.id !== e.target.dataset.labelId)
-      this.setRegions(chosenRegions)
-      this.renderLabels()
+      this.#setRegions(chosenRegions)
+      this.#renderLabels()
     }
   }
 
-  setRegions(regions) {
+  #setRegions(regions) {
     this.chosenRegions = regions
     this.saveButton.disabled = this.chosenRegions.length === 0
   }
@@ -131,7 +127,7 @@ export class RegionSelector {
   }
 
   #getData() {
-    this.showLoader()
+    this.#showLoader()
     fetch(`https://studika.ru/api/areas`, {
       method: 'POST',
     })
@@ -140,12 +136,12 @@ export class RegionSelector {
         this.regions = regions
         this.filteredRegions = regions
         this.subscribe({ regions: this.regions })
-        this.renderList()
-        this.hideLoader()
+        this.#renderList()
+        this.#hideLoader()
       })
       .catch(e => {
         console.warn(e)
-        this.hideLoader()
+        this.#hideLoader()
       })
   }
 
@@ -166,11 +162,11 @@ export class RegionSelector {
     this.modalMenu.classList.toggle('active')
   }
 
-  renderLabels() {
+  #renderLabels() {
     this.labels.innerHTML = createLabelsTemplate(this.chosenRegions)
   }
 
-  renderList() {
+  #renderList() {
     const searchText = this.input.value
 
     this.container.innerHTML = createRegionTemplate(this.filteredRegions, searchText)

@@ -74,17 +74,16 @@
 
               <div class="mobile-nav-box">
                 <ul class="mobile-nav-box__categories-list">
-                  <li class="mobile-nav-box__categories-item mobile-nav-box__categories-item--active"
-                      data-category="higher">
-                    <button class="mobile-nav-box__categories-button">Высшее</button>
+                  <li class="mobile-nav-box__categories-item mobile-nav-box__categories-item--active">
+                    <button class="mobile-nav-box__categories-button" data-category-menu="higher">Высшее</button>
                   </li>
-                  <li class="mobile-nav-box__categories-item" data-category="secondary">
-                    <button class="mobile-nav-box__categories-button">Среднее</button>
+                  <li class="mobile-nav-box__categories-item">
+                    <button class="mobile-nav-box__categories-button" data-category-menu="secondary">Среднее</button>
                   </li>
                 </ul>
 
                 <ul class="mobile-nav-box__mobile-link-list mobile-link-list mobile-link-list--active"
-                    data-category="higher">
+                    data-category-list="higher">
                   <li class="mobile-link-list__item">
                     <a class="mobile-link-list__link" href="#">Вузы</a>
                   </li>
@@ -92,11 +91,13 @@
                     <a class="mobile-link-list__link" href="#">Специальности</a>
                   </li>
                 </ul>
-                <ul class="mobile-link-list" data-category="secondary">
-                  <li class="mobile-link-list__item"><a class="mobile-lint-list__link" href="#">Колледжи</a></li>
-                  <li class="mobile-link-list__item"><a class="mobile-lint-list__link" href="#">Техникумы</a></li>
-                  <li class="mobile-link-list__item"><a class="mobile-lint-list__link" href="#">Училища</a></li>
-                  <li class="mobile-link-list__item"><a class="mobile-lint-list__link" href="#">Специальности</a></li>
+                <ul class="mobile-nav-box__mobile-link-list mobile-link-list" data-category-list="secondary">
+                  <li class="mobile-link-list__item">
+                    <a class="mobile-link-list__link" href="#">Колледжи</a>
+                  </li>
+                  <li class="mobile-link-list__item"><a class="mobile-link-list__link" href="#">Техникумы</a></li>
+                  <li class="mobile-link-list__item"><a class="mobile-link-list__link" href="#">Училища</a></li>
+                  <li class="mobile-link-list__item"><a class="mobile-link-list__link" href="#">Специальности</a></li>
                 </ul>
                 <ul class="mobile-nav-box__secondary_list  secondary-list">
                   <li class="secondary-list__item"><a class="secondary-list__link" href="#">Профессии</a></li>
@@ -208,8 +209,9 @@
             <li class="nav__item">
               <a class="nav__link" href="">Среднее</a>
             </li>
+          </ul>
         </div>
-        </ul>
+        
         <div class="nav__controls">
           <button class="nav__button nav__button--left"></button>
           <button class="nav__button nav__button--right"></button>

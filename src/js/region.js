@@ -32,6 +32,6 @@ const dataRegions = {
   },
 }
 
-new RegionSelector((data) => dataRegions.changeData(data), dataRegions.regions, textElement, button, modalMenu, loader, container)
+new RegionSelector((data) => dataRegions.changeData(data), dataRegions.regions, button, modalMenu, loader, container)
 
-new RegionSelector((data) => dataRegions.changeData(data), dataRegions.regions, textElementMobile, buttonMobile, modalMenuMobile, loaderMobile, containerMobile)
+new RegionSelector((data) => dataRegions.changeData(data), dataRegions.regions, buttonMobile, modalMenuMobile, loaderMobile, containerMobile)
